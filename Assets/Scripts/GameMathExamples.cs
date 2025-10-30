@@ -22,7 +22,7 @@ public class GameMathExamples : MonoBehaviour
     void Start()
     {
         initialSineCubePos = sineCube.position;
-        initialEulerExampleRot = eulerRotationExample.eulerAngles;
+        initialEulerExampleRot = eulerRotationExample.localRotation.eulerAngles;
     }
 
     // Update is called once per frame
