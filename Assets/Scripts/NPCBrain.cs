@@ -28,13 +28,30 @@ public class NPCBrain : MonoBehaviour
     void OnDestinationReached()
     {
         destination = GetRandomDestination();
-        agent.SetDestination(destination);
+        SetAgentDestinationReliably(destination);
         // turn to face the new destination
         Vector3 _lookDirection = (destination - transform.position).normalized;
         if (_lookDirection != Vector3.zero)
         {
             Quaternion _lookRotation = Quaternion.LookRotation(_lookDirection);
             transform.rotation = _lookRotation;
+        }
+    }
+
+    void SetAgentDestinationReliably(Vector3 dest, int maxAttempts = 10)
+    {
+        bool _destinationSet = false;
+        for (int i = 0; i < maxAttempts; i++)
+        {
+            if (agent.SetDestination(dest))
+            {
+                _destinationSet = true;
+                break;
+            }
+        }
+        if (!_destinationSet)
+        {
+            Debug.LogWarning("Failed to set destination for NPC after multiple attempts.");
         }
     }
 
