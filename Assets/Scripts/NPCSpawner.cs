@@ -4,21 +4,29 @@ public class NPCSpawner : MonoBehaviour
 {
     public int maxNPCs = 50;
     public GameObject npcPrefab;
+    public BoxCollider spawnZone;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         for (int i = 0; i < maxNPCs; i++)
         {
-            Vector3 _spawnPosition = new Vector3(
-                Random.Range(-10f, 10f),
-                0f,
-                Random.Range(-10f, 10f)
+            //Get a random position within the bounds of the spawn zone cube
+            Vector3 randomPosition = GetRandomPositionInSpawnZone();
+
+            //Instantiate the NPC at the random position within the spawn zone
+            Instantiate(
+                npcPrefab,
+                spawnZone.transform.position + randomPosition,
+                Quaternion.identity
             );
-            Instantiate(npcPrefab, _spawnPosition, Quaternion.identity);
         }
     }
 
-    // Update is called once per frame
-    void Update() { }
+    private Vector3 GetRandomPositionInSpawnZone()
+    {
+        float _randomX = Random.Range(-spawnZone.bounds.extents.x, spawnZone.bounds.extents.x);
+        float _randomZ = Random.Range(-spawnZone.bounds.extents.z, spawnZone.bounds.extents.z);
+        return new Vector3(_randomX, 0, _randomZ);
+    }
 }
