@@ -14,12 +14,12 @@ public class NPCSpawner : MonoBehaviour
             BoxCollider currentSpawnZone = spawnZones[i % spawnZones.Length];
             //Get a random position within the bounds of the spawn zone cube
             Vector3 randomPosition = GetRandomPositionInSpawnZone(currentSpawnZone);
-
+            float _randomHeading = Random.Range(0f, 360f);
             //Instantiate the NPC at the random position within the spawn zone
             Instantiate(
                 npcPrefab,
                 currentSpawnZone.transform.position + randomPosition,
-                Quaternion.identity
+                Quaternion.Euler(0, _randomHeading, 0)
             );
         }
     }
