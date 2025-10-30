@@ -29,6 +29,13 @@ public class NPCBrain : MonoBehaviour
     {
         destination = GetRandomDestination();
         agent.SetDestination(destination);
+        // turn to face the new destination
+        Vector3 _lookDirection = (destination - transform.position).normalized;
+        if (_lookDirection != Vector3.zero)
+        {
+            Quaternion _lookRotation = Quaternion.LookRotation(_lookDirection);
+            transform.rotation = _lookRotation;
+        }
     }
 
     // Update is called once per frame
