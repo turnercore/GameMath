@@ -52,7 +52,7 @@ public class GameMathExamples : MonoBehaviour
         float _sineOutput = Mathf.Sin(_timeSinceGameStart);
         textField06.text = "Here is a sine function: " + _sineOutput.ToString();
         sineCube.position = new Vector3(
-            initialSineCubePos.x + (_sineOutput),
+            initialSineCubePos.x + (_sineOutput * 3.2f),
             initialSineCubePos.y,
             initialSineCubePos.z
         );
