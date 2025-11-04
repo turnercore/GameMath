@@ -1,9 +1,8 @@
 ﻿<Solution>
   <Project Path="TableForge.Editor.csproj" />
   <Project Path="TableForge.Demo.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="TableForge.Runtime.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="EM.AutoSave.Editor.csproj" />
-  <Project Path="Plugins.BackgroundRecompiler.Editor.csproj" />
 </Solution>

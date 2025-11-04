@@ -1,3 +1,4 @@
+using GameMath.Demo;
 using UnityEngine;
 
 public class NPCSpawner : MonoBehaviour
@@ -5,6 +6,7 @@ public class NPCSpawner : MonoBehaviour
     public int maxNPCs = 50;
     public GameObject npcPrefab;
     public BoxCollider[] spawnZones;
+    public NPCData[] npcDataOptions;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -15,12 +17,34 @@ public class NPCSpawner : MonoBehaviour
             //Get a random position within the bounds of the spawn zone cube
             Vector3 randomPosition = GetRandomPositionInSpawnZone(currentSpawnZone);
             float _randomHeading = Random.Range(0f, 360f);
+            NPCData selectedNPCData = npcDataOptions[Random.Range(0, npcDataOptions.Length)];
+
             //Instantiate the NPC at the random position within the spawn zone
-            Instantiate(
+            GameObject npcInstance = Instantiate(
                 npcPrefab,
                 currentSpawnZone.transform.position + randomPosition,
                 Quaternion.Euler(0, _randomHeading, 0)
             );
+
+            NPC npcComponent = npcInstance.GetComponent<NPC>();
+            if (npcComponent != null)
+            {
+                npcComponent.npcData = selectedNPCData;
+            }
+        }
+
+        MakeSpawnZonesInvisible();
+    }
+
+    private void MakeSpawnZonesInvisible()
+    {
+        foreach (BoxCollider zone in spawnZones)
+        {
+            Renderer _renderer = zone.GetComponent<Renderer>();
+            if (_renderer != null)
+            {
+                _renderer.enabled = false;
+            }
         }
     }
 

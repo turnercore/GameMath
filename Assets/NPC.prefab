@@ -800,6 +800,7 @@ GameObject:
   - component: {fileID: 6274061350128235200}
   - component: {fileID: 9023585849526179231}
   - component: {fileID: 2108134809955524122}
+  - component: {fileID: 2089390535431867927}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -874,6 +875,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c09a1c59344f2a34c8b6381fad1da494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  agent: {fileID: 9023585849526179231}
+  modelTransform: {fileID: 4843689968502508826}
+  invertModelForward: 1
+  modelRotateSpeed: 600
+--- !u!114 &2089390535431867927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6028631488610564254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b4995eb7eab600428c56811b11d3ff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  bodyRenderer: {fileID: 3886420223062852320}
+  npcName: 
+  _npcBrain: {fileID: 2108134809955524122}
 --- !u!1 &6758734785637998483
 GameObject:
   m_ObjectHideFlags: 0

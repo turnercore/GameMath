@@ -15,14 +15,12 @@ public class GameMathExamples : MonoBehaviour
     private Vector3 initialSineCubePos;
     public Transform vectorHeading;
     public Transform vectorTarget;
-    public Transform eulerRotationExample;
     private Vector3 initialEulerExampleRot;
 
     // Start is called before the first frame update
     void Start()
     {
         initialSineCubePos = sineCube.position;
-        initialEulerExampleRot = eulerRotationExample.localRotation.eulerAngles;
     }
 
     // Update is called once per frame
@@ -66,12 +64,5 @@ public class GameMathExamples : MonoBehaviour
             + _distanceToTarget.ToString();
         // Rotate the vectorHeading to face the target
         vectorHeading.rotation = Quaternion.LookRotation(_newHeadingDirection);
-        // Example of Euler Rotations
-        Vector3 _newEulerRotation = new Vector3(
-            initialEulerExampleRot.x,
-            initialEulerExampleRot.y * _sineOutput,
-            initialEulerExampleRot.z
-        );
-        eulerRotationExample.rotation = Quaternion.Euler(_newEulerRotation);
     }
 }
