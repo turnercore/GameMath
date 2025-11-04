@@ -1395,10 +1395,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1579321077437426481, guid: c1b67dbd14ae3bf4c8daa137433fe243, type: 3}
-      propertyPath: npcPrefab
-      value: 
-      objectReference: {fileID: 6065714732523749172, guid: 0d2a402078454c144a5edb6d16ee4f76, type: 3}
-    - target: {fileID: 1579321077437426481, guid: c1b67dbd14ae3bf4c8daa137433fe243, type: 3}
       propertyPath: spawnZones.Array.size
       value: 4
       objectReference: {fileID: 0}

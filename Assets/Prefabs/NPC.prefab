@@ -799,11 +799,11 @@ GameObject:
   - component: {fileID: 404989792376983015}
   - component: {fileID: 6274061350128235200}
   - component: {fileID: 9023585849526179231}
-  - component: {fileID: 2108134809955524122}
   - component: {fileID: 2089390535431867927}
+  - component: {fileID: 3326684187306447684}
   m_Layer: 0
   m_Name: NPC
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -863,22 +863,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &2108134809955524122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6028631488610564254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c09a1c59344f2a34c8b6381fad1da494, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  agent: {fileID: 9023585849526179231}
-  modelTransform: {fileID: 4843689968502508826}
-  invertModelForward: 1
-  modelRotateSpeed: 600
 --- !u!114 &2089390535431867927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -892,8 +876,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   bodyRenderer: {fileID: 3886420223062852320}
-  npcName: 
-  _npcBrain: {fileID: 2108134809955524122}
+  _npcBrain: {fileID: 3326684187306447684}
+--- !u!114 &3326684187306447684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6028631488610564254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4a8ed987d22c24d8a9d6c053c97a55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCBrainRandomMover
+  agent: {fileID: 9023585849526179231}
+  autoStart: 1
+  useAgentRotation: 1
+  modelTransform: {fileID: 4843689968502508826}
+  invertModelForward: 1
+  modelRotateSpeed: 360
+  arrivalThreshold: 0
+  minDistance: 5
+  maxDistance: 20
+  startOnStart: 1
 --- !u!1 &6758734785637998483
 GameObject:
   m_ObjectHideFlags: 0
