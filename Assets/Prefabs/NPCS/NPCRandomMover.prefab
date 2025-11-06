@@ -50,10 +50,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6028631488610564254, guid: 05b984fb1ecf83c46a70bf2492e29d81, type: 3}
       propertyPath: m_Name
-      value: NPC
+      value: NPCRandomMover
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1701277163123527804, guid: 05b984fb1ecf83c46a70bf2492e29d81, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05b984fb1ecf83c46a70bf2492e29d81, type: 3}

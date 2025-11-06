@@ -1,4 +1,3 @@
-// ...existing code...
 using UnityEngine;
 
 public class NPCBrainRandomMover : NPCBrain
@@ -41,14 +40,11 @@ public class NPCBrainRandomMover : NPCBrain
         // create task and start it
         CurrentTask = new BrainTaskRandomMove(minDistance, maxDistance);
         CurrentTask.StartTask(this);
-        Debug.Log($"{name}: Assigned RandomMoveTask (min {minDistance} max {maxDistance})");
     }
 
     // keep the previous override if you still want a log on arrival (optional)
     protected override void OnArrival()
     {
         base.OnArrival();
-        Debug.Log($"{name} arrived at destination {destination}");
     }
 }
-// ...existing code...

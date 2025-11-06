@@ -1,10 +1,10 @@
-using UnityEngine;
+using System;
 
 /// <summary>
 /// Lightweight task abstraction for NPCBrains.
 /// Not a MonoBehaviour — manage lifetime from the brain.
 /// </summary>
-public abstract class BrainTask
+public abstract class BrainTask : ICloneable
 {
     protected NPCBrain brain;
     public bool IsCompleted { get; protected set; }
@@ -29,11 +29,15 @@ public abstract class BrainTask
     {
         IsCompleted = true;
         OnCancelled?.Invoke();
+        Dispose();
     }
 
-    protected void Complete()
+    public virtual void Complete()
     {
         IsCompleted = true;
         OnCompleted?.Invoke();
+        Dispose();
     }
+
+    public virtual object Clone() => MemberwiseClone();
 }

@@ -1,24 +1,38 @@
-// ...existing code...
 using UnityEngine;
 
 public class NPCJobBlackMarketDealer : NPCJob
 {
-    protected override void Start()
+    [SerializeField]
+    float margin = 1.2f;
+
+    [SerializeField]
+    bool clockwise = true;
+
+    [SerializeField]
+    float lookAhead = 3.0f;
+
+    [SerializeField]
+    float repathInterval = 0.2f;
+
+    [SerializeField]
+    float cornerRadius = 1.0f;
+
+    protected override System.Type WorksiteType => typeof(BlackMarketWorksite);
+
+    public override BrainTask CreateWorkTask(float workSpeed)
     {
-        base.Start();
-        // guard-specific init
+        var root = _jobLocation != null ? _jobLocation : transform;
+        return new BrainTaskPatrolPerimeter(
+            root,
+            margin: margin,
+            clockwise: clockwise,
+            lookAhead: lookAhead,
+            repathInterval: repathInterval,
+            cornerRadius: cornerRadius
+        );
     }
 
-    protected override void Update()
-    {
-        base.Update();
-        // guard-specific per-frame logic, then call job
-        ExecuteJob();
-    }
+    public override void ExecuteJob() => GainXpTick(); // XP tick stays the same
 
-    public override void ExecuteJob()
-    {
-        // actual job implementation
-        Debug.Log($"{name} is guarding.");
-    }
+    public override void JobFinished() { }
 }

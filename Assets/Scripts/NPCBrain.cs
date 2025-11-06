@@ -36,6 +36,21 @@ public abstract class NPCBrain : MonoBehaviour
     protected bool _hasActiveDestination = false;
     public bool HasActiveDestination => _hasActiveDestination;
 
+    public string CurrentState
+    {
+        get
+        {
+            if (CurrentTask != null)
+            {
+                return CurrentTask.GetType().Name;
+            }
+            else
+            {
+                return "Idle";
+            }
+        }
+    }
+
     protected bool _arrivalReported = false;
 
     // Event raised when an arrival is detected. Derived classes / systems subscribe or override OnArrival().
@@ -55,6 +70,19 @@ public abstract class NPCBrain : MonoBehaviour
             }
             _currentTask = value;
         }
+    }
+
+    public int MyLevel => GetLevel();
+    public int MyXP => GetXP();
+
+    protected virtual int GetLevel()
+    {
+        return -1;
+    }
+
+    protected virtual int GetXP()
+    {
+        return -1;
     }
 
     protected virtual void Awake()
@@ -206,9 +234,6 @@ public abstract class NPCBrain : MonoBehaviour
         {
             _arrivalReported = true;
             _hasActiveDestination = false;
-            Debug.Log(
-                $"{name}: Arrival detected. remaining={agent.remainingDistance:F2}, status={agent.pathStatus}"
-            );
             OnArrived?.Invoke();
             OnArrival();
         }

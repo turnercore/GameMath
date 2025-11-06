@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1220302902018189001
+--- !u!1001 &2071243261722523783
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 404989792376983015, guid: 05b984fb1ecf83c46a70bf2492e29d81, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.2317
+      objectReference: {fileID: 0}
+    - target: {fileID: 404989792376983015, guid: 05b984fb1ecf83c46a70bf2492e29d81, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.3409
+      objectReference: {fileID: 0}
     - target: {fileID: 404989792376983015, guid: 05b984fb1ecf83c46a70bf2492e29d81, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -48,54 +56,55 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2089390535431867927, guid: 05b984fb1ecf83c46a70bf2492e29d81, type: 3}
-      propertyPath: _npcBrain
+    - target: {fileID: 3886420223062852320, guid: 05b984fb1ecf83c46a70bf2492e29d81, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2089618859466473271}
+      objectReference: {fileID: 2100000, guid: 1aa3a98a9764baa4f89f16ae63caa93d, type: 2}
     - target: {fileID: 6028631488610564254, guid: 05b984fb1ecf83c46a70bf2492e29d81, type: 3}
       propertyPath: m_Name
-      value: NPCWorker
+      value: Cow
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3326684187306447684, guid: 05b984fb1ecf83c46a70bf2492e29d81, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 1701277163123527804, guid: 05b984fb1ecf83c46a70bf2492e29d81, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6028631488610564254, guid: 05b984fb1ecf83c46a70bf2492e29d81, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2089618859466473271}
+      addedObject: {fileID: 485198280802257090}
   m_SourcePrefab: {fileID: 100100000, guid: 05b984fb1ecf83c46a70bf2492e29d81, type: 3}
---- !u!1 &4847389854972108375 stripped
+--- !u!23 &2977405331525220967 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3886420223062852320, guid: 05b984fb1ecf83c46a70bf2492e29d81, type: 3}
+  m_PrefabInstance: {fileID: 2071243261722523783}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3644618680923007939 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3326684187306447684, guid: 05b984fb1ecf83c46a70bf2492e29d81, type: 3}
+  m_PrefabInstance: {fileID: 2071243261722523783}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5698329649612423193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4a8ed987d22c24d8a9d6c053c97a55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCBrainRandomMover
+--- !u!1 &5698329649612423193 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6028631488610564254, guid: 05b984fb1ecf83c46a70bf2492e29d81, type: 3}
-  m_PrefabInstance: {fileID: 1220302902018189001}
+  m_PrefabInstance: {fileID: 2071243261722523783}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2089618859466473271
+--- !u!114 &485198280802257090
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4847389854972108375}
+  m_GameObject: {fileID: 5698329649612423193}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06c53fe428fdc2a4dad043950f46913d, type: 3}
+  m_Script: {fileID: 11500000, guid: 8076e8104a87aa64888b4dde4633bbc6, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NPCBrainJobWorker
-  agent: {fileID: 7914324843000230742}
-  autoStart: 1
-  useAgentRotation: 1
-  modelTransform: {fileID: 6041400071228697555}
-  invertModelForward: 1
-  modelRotateSpeed: 360
-  arrivalThreshold: 0
---- !u!4 &6041400071228697555 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4843689968502508826, guid: 05b984fb1ecf83c46a70bf2492e29d81, type: 3}
-  m_PrefabInstance: {fileID: 1220302902018189001}
-  m_PrefabAsset: {fileID: 0}
---- !u!195 &7914324843000230742 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 9023585849526179231, guid: 05b984fb1ecf83c46a70bf2492e29d81, type: 3}
-  m_PrefabInstance: {fileID: 1220302902018189001}
-  m_PrefabAsset: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::Cow
+  bodyRenderer: {fileID: 2977405331525220967}
+  _npcBrain: {fileID: 3644618680923007939}
