@@ -11,7 +11,6 @@ public class NPCBrainRandomMover : NPCBrain
     public bool startOnStart = true;
 
     // current assigned task
-    private BrainTask currentTask;
 
     protected override void Start()
     {
@@ -25,13 +24,13 @@ public class NPCBrainRandomMover : NPCBrain
         base.Update();
 
         // tick current task
-        if (currentTask != null && !currentTask.IsCompleted)
+        if (CurrentTask != null && !CurrentTask.IsCompleted)
         {
-            currentTask.UpdateTask(Time.deltaTime);
+            CurrentTask.UpdateTask(Time.deltaTime);
         }
 
         // if task finished (or null) assign next one
-        if (currentTask == null || currentTask.IsCompleted)
+        if (CurrentTask == null || CurrentTask.IsCompleted)
         {
             AssignNewRandomMoveTask();
         }
@@ -40,8 +39,8 @@ public class NPCBrainRandomMover : NPCBrain
     void AssignNewRandomMoveTask()
     {
         // create task and start it
-        currentTask = new BrainTaskRandomMove(minDistance, maxDistance);
-        currentTask.StartTask(this);
+        CurrentTask = new BrainTaskRandomMove(minDistance, maxDistance);
+        CurrentTask.StartTask(this);
         Debug.Log($"{name}: Assigned RandomMoveTask (min {minDistance} max {maxDistance})");
     }
 

@@ -8,6 +8,14 @@ public abstract class BrainTask
 {
     protected NPCBrain brain;
     public bool IsCompleted { get; protected set; }
+    public event System.Action OnCompleted;
+    public event System.Action OnCancelled;
+
+    public virtual void Dispose()
+    {
+        OnCompleted = null;
+        OnCancelled = null;
+    }
 
     public virtual void StartTask(NPCBrain brain)
     {
@@ -20,5 +28,12 @@ public abstract class BrainTask
     public virtual void Cancel()
     {
         IsCompleted = true;
+        OnCancelled?.Invoke();
+    }
+
+    protected void Complete()
+    {
+        IsCompleted = true;
+        OnCompleted?.Invoke();
     }
 }

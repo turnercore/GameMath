@@ -41,6 +41,22 @@ public abstract class NPCBrain : MonoBehaviour
     // Event raised when an arrival is detected. Derived classes / systems subscribe or override OnArrival().
     public event Action OnArrived;
 
+    private BrainTask _currentTask;
+
+    public BrainTask CurrentTask
+    {
+        get => _currentTask;
+        set
+        {
+            // Clean up previous task
+            if (_currentTask != null)
+            {
+                _currentTask.Dispose();
+            }
+            _currentTask = value;
+        }
+    }
+
     protected virtual void Awake()
     {
         if (agent == null)

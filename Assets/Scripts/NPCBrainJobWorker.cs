@@ -8,8 +8,6 @@ public class NPCBrainJobWorker : NPCBrain
 {
     private Vector3 homePosition;
 
-    private BrainTask currentTask;
-
     [Header("Random Mover Settings")]
     public float minDistance = 5f;
     public float maxDistance = 20f;
@@ -28,6 +26,8 @@ public class NPCBrainJobWorker : NPCBrain
     private new void Start()
     {
         base.Start();
+        // Set home position to spawn position
+        homePosition = transform.position;
         // Find the TimeOfDay instance in the scene
         time = FindFirstObjectByType<TimeOfDay>();
         if (time == null)
@@ -36,7 +36,7 @@ public class NPCBrainJobWorker : NPCBrain
         }
         // Set default tasks to move randomly if they are not set
         if (afterHoursTask == null)
-            afterHoursTask = new BrainTaskRandomMove(minDistance, maxDistance);
+            afterHoursTask = new BrainTaskMoveToLocation(homePosition);
         if (beforeHoursTask == null)
             beforeHoursTask = new BrainTaskRandomMove(minDistance, maxDistance);
         if (workJob == null)
@@ -55,47 +55,56 @@ public class NPCBrainJobWorker : NPCBrain
             if (currentHour >= workHours.x && currentHour <= workHours.y)
             {
                 // Within work hours
-                if (currentTask != null)
+                if (CurrentTask != null)
                 {
-                    currentTask.Cancel();
+                    CurrentTask.Cancel();
                 }
                 if (workJob != null)
                 {
-                    workJob.ExecuteJob();
+                    // Assign task to go to the location, and arrival handler to excute the job
+                    BrainTaskMoveToLocation moveToJobLocationTask = new BrainTaskMoveToLocation(
+                        jobLocation.position
+                    );
+                    moveToJobLocationTask.StartTask(this);
+                    CurrentTask = moveToJobLocationTask;
+                    CurrentTask.OnCompleted += () =>
+                    {
+                        workJob.ExecuteJob();
+                    };
                 }
             }
             else if (currentHour > workHours.y)
             {
                 // After work hours
-                if (currentTask != afterHoursTask)
+                if (CurrentTask != afterHoursTask)
                 {
-                    if (currentTask != null)
+                    if (CurrentTask != null)
                     {
-                        currentTask.Cancel();
+                        CurrentTask.Cancel();
                     }
                     afterHoursTask.StartTask(this);
-                    currentTask = afterHoursTask;
+                    CurrentTask = afterHoursTask;
                 }
             }
             else if (currentHour < workHours.x)
             {
                 // Before work hours
-                if (currentTask != beforeHoursTask)
+                if (CurrentTask != beforeHoursTask)
                 {
-                    if (currentTask != null)
+                    if (CurrentTask != null)
                     {
-                        currentTask.Cancel();
+                        CurrentTask.Cancel();
                     }
                     beforeHoursTask.StartTask(this);
-                    currentTask = beforeHoursTask;
+                    CurrentTask = beforeHoursTask;
                 }
             }
         }
 
         // tick current task
-        if (currentTask != null && !currentTask.IsCompleted)
+        if (CurrentTask != null && !CurrentTask.IsCompleted)
         {
-            currentTask.UpdateTask(Time.deltaTime);
+            CurrentTask.UpdateTask(Time.deltaTime);
         }
     }
 
@@ -103,8 +112,8 @@ public class NPCBrainJobWorker : NPCBrain
     void AssignNewRandomMoveTask()
     {
         // create task and start it
-        currentTask = new BrainTaskRandomMove(minDistance, maxDistance);
-        currentTask.StartTask(this);
+        CurrentTask = new BrainTaskRandomMove(minDistance, maxDistance);
+        CurrentTask.StartTask(this);
         Debug.Log($"{name}: Assigned RandomMoveTask (min {minDistance} max {maxDistance})");
     }
 }

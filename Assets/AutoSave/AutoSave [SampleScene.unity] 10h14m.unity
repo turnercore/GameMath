@@ -1003,6 +1003,54 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1935c43b300513d4684c88a7fae66609, type: 3}
+--- !u!1 &881910002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 881910003}
+  - component: {fileID: 881910004}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &881910003
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881910002}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 21.27897, y: 0, z: 74.26062}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &881910004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881910002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98acd661363e93740ab1173300baa43b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  secondsPerDay: 30
+  currentTime: 0
+  currentDay: 0
+  directionalLight: {fileID: 2033977478}
 --- !u!4 &1014872229 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1061703839912510175, guid: 5f2a27e69626b3048bdeb98dded337ce, type: 3}
@@ -1394,6 +1442,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1579321077437426481, guid: c1b67dbd14ae3bf4c8daa137433fe243, type: 3}
+      propertyPath: npcPrefab
+      value: 
+      objectReference: {fileID: 6065714732523749172, guid: 0d2a402078454c144a5edb6d16ee4f76, type: 3}
     - target: {fileID: 1579321077437426481, guid: c1b67dbd14ae3bf4c8daa137433fe243, type: 3}
       propertyPath: spawnZones.Array.size
       value: 4
@@ -2179,3 +2231,4 @@ SceneRoots:
   - {fileID: 1283258378}
   - {fileID: 430259044}
   - {fileID: 243892989}
+  - {fileID: 881910003}
